@@ -51,14 +51,14 @@ const domEvents = () => {
     // CLICK EVENT FOR EDITING A BOOK
     if (e.target.id.includes('update-book')) {
       e.preventDefault();
-      const [, id] = e.target.id.split('--');
+      const [, firebaseKey] = e.target.id.split('--');
       const bookObject = {
         title: document.querySelector('#title').value,
         image: document.querySelector('#image').value,
         price: document.querySelector('#price').value,
         sale: document.querySelector('#sale').checked,
         author_id: document.querySelector('#author_id').value,
-        firebaseKey: id,
+        firebaseKey
       };
       updateBook(bookObject).then(showBooks);
     }
@@ -67,7 +67,7 @@ const domEvents = () => {
     if (e.target.id.includes('delete-author')) {
       // eslint-disable-next-line no-alert
       window.confirm('Want to delete?');
-      const [, id] = e.target.split('--');
+      const [, id] = e.target.id.split('--');
       // console.warn('CLICKED DELETE BOOK', e.target.id);
       deleteAuthor(id).then(showAuthors);
     }

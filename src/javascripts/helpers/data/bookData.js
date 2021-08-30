@@ -44,13 +44,12 @@ const updateBook = (bookObj) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 // SEARCH BOOKS
-// FILTER Books
+// FILTER BOOKS ON SALE
 const booksOnSale = () => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/books.json?orderBy="sale"&equalTo=true`)
     .then((response) => resolve(Object.values(response.data)))
     .catch(reject);
 });
-
 export {
   getBooks, createBook, deleteBook, getSingleBook, updateBook, booksOnSale
 };
