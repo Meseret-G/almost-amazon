@@ -7,11 +7,12 @@ const selectAuthor = (authorId) => {
 
   getAuthors().then((authorsArray) => {
     authorsArray.forEach((author) => {
-      domString += `<option 
-      value="${author.firebaseKey}"
-      ${authorId === author.firebaseKey ? 'selected' : ''}>
-       ${author.first_name} ${author.last_name}
-       </option>`;
+      domString += `
+        <option value="${author.firebaseKey}"
+        ${authorId === author.firebaseKey ? 'selected' : ''}>
+          ${author.first_name} ${author.last_name}
+        </option>
+      `;
     });
 
     domString += '</select>';
